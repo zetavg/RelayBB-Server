@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :owned_boards, foreign_key: :owner_id, class_name: 'Board'
+  has_many :authored_posts, foreign_key: :author_id, class_name: 'Post'
 
   validates :username, presence: true
   validates :username, uniqueness: true
