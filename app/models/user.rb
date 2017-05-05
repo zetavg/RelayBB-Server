@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :owned_boards, foreign_key: :owner_id, class_name: 'Board'
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
