@@ -20,6 +20,10 @@ class User < ApplicationRecord
     self.encrypted_password = Digest::SHA256.hexdigest(password)
   end
 
+  def valid_password?(password)
+    encrypted_password == Digest::SHA256.hexdigest(password)
+  end
+
   private
 
   def validate_password_confirmation_match
